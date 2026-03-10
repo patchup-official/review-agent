@@ -1,0 +1,20 @@
+services:
+  - type: cron
+    name: review-agent
+    runtime: python
+    schedule: "0 * * * *"   # ogni ora — modifica a piacere
+    buildCommand: pip install -r requirements.txt
+    startCommand: python review_agent.py
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false          # inserisci manualmente su Render dashboard
+      - key: GOOGLE_LOCATION_ID
+        sync: false
+      - key: GOOGLE_CREDENTIALS_JSON
+        sync: false
+      - key: ALERT_EMAIL_TO
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
